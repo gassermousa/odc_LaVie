@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:la_vie/presentation/componentes/btns.dart';
+import 'package:la_vie/presentation/constant/navigator.dart';
+import 'package:la_vie/presentation/screens/home_screen.dart';
+import 'package:la_vie/presentation/screens/main_screen.dart';
+import 'package:la_vie/presentation/screens/profile_screen.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({
@@ -45,7 +49,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           isHover = value;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+                        AppNavigator.customNavigator(
+                            context: context,
+                            screen: MainScreen(),
+                            finish: false);
+                      },
                       child: ItemAppBar(
                         isHover: isHover,
                         text: 'Home',
@@ -58,7 +67,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           isHover2 = value;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+                        AppNavigator.customNavigator(
+                            context: context,
+                            screen: ProfileScreen(),
+                            finish: false);
+                      },
                       child: ItemAppBar(
                         isHover: isHover2,
                         text: 'Shop',

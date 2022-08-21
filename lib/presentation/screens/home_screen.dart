@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:la_vie/presentation/componentes/btns.dart';
+import 'package:la_vie/presentation/componentes/formfield.dart';
 import 'package:la_vie/presentation/componentes/widgets.dart';
 import 'package:la_vie/presentation/constant/colors.dart';
 
@@ -12,6 +13,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formkey = GlobalKey<FormState>();
+    var titleController = TextEditingController();
+    var descriptionController = TextEditingController();
+    var photoController = TextEditingController();
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +89,175 @@ class HomeScreen extends StatelessWidget {
                             width: 120,
                             hight: 50,
                             text: 'Explore Now',
-                            onpress: () {},
+                            onpress: () {
+                              //TODO:Create New Post
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Center(
+                                    child: Container(
+                                      height: 680,
+                                      width: 900,
+                                      color: Colors.white,
+                                      child: Scaffold(
+                                        body: Form(
+                                          key: formkey,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20.0),
+                                            child: ListView(
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    vertical: 10.0,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        'Create a New Post',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                defaultColor),
+                                                      ),
+                                                      IconButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          icon:
+                                                              Icon(Icons.close))
+                                                    ],
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Title',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 10.0,
+                                                ),
+                                                defaultFormFiled(
+                                                  controller: titleController,
+                                                  type: TextInputType.name,
+                                                  action: TextInputAction.next,
+                                                  validate: (String? value) {
+                                                    if (value == null ||
+                                                        value.trim().isEmpty) {
+                                                      return 'Please Enter Title';
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                                SizedBox(
+                                                  height: 30.0,
+                                                ),
+                                                Text(
+                                                  'Description',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 10.0,
+                                                ),
+                                                defaultFormFiled(
+                                                  maxlines: 150 ~/ 20,
+                                                  controller:
+                                                      descriptionController,
+                                                  type: TextInputType.name,
+                                                  action: TextInputAction.next,
+                                                  validate: (String? value) {
+                                                    if (value == null ||
+                                                        value.trim().isEmpty) {
+                                                      return 'Please Enter Description';
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                                SizedBox(
+                                                  height: 30.0,
+                                                ),
+                                                Text(
+                                                  'Update photo ',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: 10.0,
+                                                ),
+                                                Stack(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  children: [
+                                                    defaultFormFiled(
+                                                      controller:
+                                                          photoController,
+                                                      type: TextInputType.name,
+                                                      action:
+                                                          TextInputAction.next,
+                                                      validate:
+                                                          (String? value) {
+                                                        if (value == null ||
+                                                            value
+                                                                .trim()
+                                                                .isEmpty) {
+                                                          return 'Please Enter photo';
+                                                        }
+                                                        return null;
+                                                      },
+                                                    ),
+                                                    customBtn(
+                                                        radius: 5,
+                                                        width: 120,
+                                                        hight: 60,
+                                                        text: 'update',
+                                                        onpress: () {})
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 50.0,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    customBtn(
+                                                        radius: 5,
+                                                        width: 120,
+                                                        hight: 60,
+                                                        text: 'cancel',
+                                                        onpress: () {}),
+                                                    SizedBox(
+                                                      width: 30.0,
+                                                    ),
+                                                    customBtn(
+                                                        radius: 5,
+                                                        width: 120,
+                                                        hight: 60,
+                                                        text: 'Post',
+                                                        onpress: () {})
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                             radius: 20),
                       ],
                     ),

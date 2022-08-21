@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:la_vie/presentation/screens/main_screen.dart';
+import 'package:la_vie/presentation/screens/profile_screen.dart';
 
 void main() {
   runApp(MyApp());
