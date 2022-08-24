@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:la_vie/presentation/constant/navigator.dart';
+import 'package:la_vie/presentation/screens/blog_screen.dart';
 import 'package:la_vie/presentation/screens/home_screen.dart';
+import 'package:la_vie/presentation/screens/main_screen.dart';
+import 'package:la_vie/presentation/screens/shop_screen.dart';
 
 class AuthAppBar extends StatelessWidget {
   const AuthAppBar({Key? key}) : super(key: key);
@@ -27,7 +30,7 @@ class AuthAppBar extends StatelessWidget {
                 ),
                 onPressed: () {
                   AppNavigator.customNavigator(
-                      context: context, screen: HomeScreen(), finish: false);
+                      context: context, screen: MainScreen(), finish: false);
                 },
                 child: const Text(
                   'Home',
@@ -46,7 +49,8 @@ class AuthAppBar extends StatelessWidget {
                   }),
                 ),
                 onPressed: () {
-                  //AppNavigator.customNavigator(context: context, screen: ShopScreen(), finish: false);
+                  AppNavigator.customNavigator(
+                      context: context, screen: ShopScreen(), finish: false);
                 },
                 child: const Text(
                   'Shop',
@@ -65,7 +69,8 @@ class AuthAppBar extends StatelessWidget {
                   }),
                 ),
                 onPressed: () {
-                  //   AppNavigator.customNavigator(context: context, screen: BlogScreen(), finish: false);
+                  AppNavigator.customNavigator(
+                      context: context, screen: BlogScreen(), finish: false);
                 },
                 child: const Text(
                   'Blog',

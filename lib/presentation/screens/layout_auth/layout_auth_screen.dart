@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:la_vie/presentation/componentes/auth_app_bar.dart';
 import 'package:la_vie/presentation/screens/layout_auth/sign_up/sign_up_screen.dart';
 
 import 'login/login_screen.dart';
@@ -11,6 +12,10 @@ class LayoutAuthScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size(double.infinity, 1000),
+          child: AuthAppBar(),
+        ),
         body: Stack(
           children: [
             Align(

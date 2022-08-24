@@ -151,7 +151,7 @@ class _ShopScreenState extends State<ShopScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Image.asset(
-                                            'assets/images/jazmin-quaynor-8ioenvmof-I-unsplash (1) 1.png',
+                                            'assets/images/test.png',
                                             width: double.infinity,
                                             height: 160,
                                           ),

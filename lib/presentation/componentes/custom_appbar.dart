@@ -65,23 +65,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         color: isHover ? Colors.green : Colors.black,
                       )),
                   SizedBox(width: 40.0),
-                  InkWell(onHover: (value) {
-                    setState(() {
-                      isHover2 = value;
-                    });
-                  }, onTap: () {
-                    BlogsCubit.get(context).getFetchPlantsModel();
-                    AppNavigator.customNavigator(
-                        context: context, screen: BlogScreen(), finish: false);
-                  }, child: BlocBuilder<BlogsCubit, BlogsState>(
-                    builder: (context, state) {
-                      return ItemAppBar(
-                        isHover: isHover2,
-                        text: 'Shop',
-                        color: isHover2 ? Colors.green : Colors.black,
-                      );
+                  InkWell(
+                    onHover: (value) {
+                      setState(() {
+                        isHover2 = value;
+                      });
                     },
-                  )),
+                    onTap: () {
+                      BlogsCubit.get(context).getFetchPlantsModel();
+                      AppNavigator.customNavigator(
+                          context: context,
+                          screen: ShopScreen(),
+                          finish: false);
+                    },
+                    child: ItemAppBar(
+                      isHover: isHover2,
+                      text: 'Shop',
+                      color: isHover2 ? Colors.green : Colors.black,
+                    ),
+                  ),
                   SizedBox(
                     width: 40.0,
                   ),
@@ -120,10 +122,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   InkWell(
                       onHover: (value) {
                         setState(() {
-                          isHover4 = value;
+                          isHover5 = value;
                         });
                       },
-                      onTap: () {},
+                      onTap: () {
+                        AppNavigator.customNavigator(
+                            context: context,
+                            screen: ProfileScreen(),
+                            finish: false);
+                      },
                       child: ItemAppBar(
                         isHover: isHover5,
                         text: 'Community',

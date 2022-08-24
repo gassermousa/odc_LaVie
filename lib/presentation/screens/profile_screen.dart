@@ -225,53 +225,55 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 280,
-                            width: 260,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)),
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.add),
-                                  SizedBox(
-                                    height: 10.0,
-                                  ),
-                                  Text('Add Photo'),
-                                ],
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 280,
+                              width: 260,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black)),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.add),
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Text('Add Photo'),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          Stack(
-                            alignment: Alignment.centerRight,
-                            children: [
-                              defaultFormFiled(
-                                controller: photoController,
-                                type: TextInputType.name,
-                                action: TextInputAction.next,
-                                validate: (String? value) {
-                                  if (value == null || value.trim().isEmpty) {
-                                    return 'Please Enter photo';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              customBtn(
-                                  radius: 5,
-                                  width: 120,
-                                  hight: 60,
-                                  text: 'update',
-                                  onpress: () {})
-                            ],
-                          ),
-                        ],
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Stack(
+                              alignment: Alignment.centerRight,
+                              children: [
+                                defaultFormFiled(
+                                  controller: photoController,
+                                  type: TextInputType.name,
+                                  action: TextInputAction.next,
+                                  validate: (String? value) {
+                                    if (value == null || value.trim().isEmpty) {
+                                      return 'Please Enter photo';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                customBtn(
+                                    radius: 5,
+                                    width: 120,
+                                    hight: 60,
+                                    text: 'update',
+                                    onpress: () {})
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     )
                     /////////////////
