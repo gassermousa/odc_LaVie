@@ -86,8 +86,8 @@ class HomeScreen extends StatelessWidget {
                           height: 15,
                         ),
                         customBtn(
-                            width: 120,
-                            hight: 50,
+                            width: 120.0,
+                            hight: 50.0,
                             text: 'Explore Now',
                             onpress: () {
                               //TODO:Create New Post
@@ -478,8 +478,8 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           customBtn(
-                              width: 120,
-                              hight: 50,
+                              width: 120.0,
+                              hight: 50.0,
                               text: 'Play Store',
                               onpress: () {},
                               radius: 20),
@@ -487,8 +487,8 @@ class HomeScreen extends StatelessWidget {
                             width: 20,
                           ),
                           customBtn(
-                              width: 120,
-                              hight: 50,
+                              width: 120.0,
+                              hight: 50.0,
                               text: 'App Store',
                               onpress: () {},
                               radius: 20),

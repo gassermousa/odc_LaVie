@@ -91,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
                 Expanded(
                     child: TabBarView(
                   children: [
-                    Column(
+                    ListView(
                       children: [
                         Row(
                           children: [

@@ -2,11 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:la_vie/appcubits/cubit/blogs_cubit/blogs_cubit.dart';
 import 'package:la_vie/presentation/componentes/btns.dart';
 import 'package:la_vie/presentation/constant/navigator.dart';
+import 'package:la_vie/presentation/screens/blog_screen.dart';
 import 'package:la_vie/presentation/screens/home_screen.dart';
 import 'package:la_vie/presentation/screens/main_screen.dart';
 import 'package:la_vie/presentation/screens/profile_screen.dart';
+import 'package:la_vie/presentation/screens/shop_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({
@@ -61,38 +65,44 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         color: isHover ? Colors.green : Colors.black,
                       )),
                   SizedBox(width: 40.0),
-                  InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          isHover2 = value;
-                        });
-                      },
-                      onTap: () {
-                        AppNavigator.customNavigator(
-                            context: context,
-                            screen: ProfileScreen(),
-                            finish: false);
-                      },
-                      child: ItemAppBar(
+                  InkWell(onHover: (value) {
+                    setState(() {
+                      isHover2 = value;
+                    });
+                  }, onTap: () {
+                    BlogsCubit.get(context).getFetchPlantsModel();
+                    AppNavigator.customNavigator(
+                        context: context, screen: BlogScreen(), finish: false);
+                  }, child: BlocBuilder<BlogsCubit, BlogsState>(
+                    builder: (context, state) {
+                      return ItemAppBar(
                         isHover: isHover2,
                         text: 'Shop',
                         color: isHover2 ? Colors.green : Colors.black,
-                      )),
+                      );
+                    },
+                  )),
                   SizedBox(
                     width: 40.0,
                   ),
-                  InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          isHover3 = value;
-                        });
-                      },
-                      onTap: () {},
-                      child: ItemAppBar(
+                  InkWell(onHover: (value) {
+                    setState(() {
+                      isHover3 = value;
+                    });
+                  }, onTap: () {
+                    BlogsCubit.get(context).getFetchPlantsModel();
+                    print('lol');
+                    AppNavigator.customNavigator(
+                        context: context, screen: BlogScreen(), finish: false);
+                  }, child: BlocBuilder<BlogsCubit, BlogsState>(
+                    builder: (context, state) {
+                      return ItemAppBar(
                         isHover: isHover3,
                         text: 'Blog',
                         color: isHover3 ? Colors.green : Colors.black,
-                      )),
+                      );
+                    },
+                  )),
                   SizedBox(width: 40.0),
                   InkWell(
                       onHover: (value) {

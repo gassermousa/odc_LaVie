@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:la_vie/presentation/constant/colors.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CategoriesWidget extends StatelessWidget {
   CategoriesWidget({Key? key, required this.imagePath, required this.name})
@@ -118,6 +119,115 @@ class BlogsWidget extends StatelessWidget {
               ),
             ]),
       ),
+    );
+  }
+}
+
+class DefaultOrLoginWith extends StatelessWidget {
+  const DefaultOrLoginWith({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: Image.asset(
+            'assets/images/google.png',
+          ),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.facebook,
+            size: 35,
+            color: Colors.blue,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DefaultTextButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final String text;
+
+  const DefaultTextButton({
+    Key? key,
+    required this.text,
+    this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return HexColor('FF#1ABC00');
+          }
+          return Colors.black;
+        }),
+      ),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+}
+
+class DefaultFormField extends StatelessWidget {
+  final String header;
+  final TextEditingController controller;
+  final int maxLines;
+  final TextInputType textInputType;
+
+  const DefaultFormField({
+    required this.textInputType,
+    required this.header,
+    required this.maxLines,
+    required this.controller,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          header,
+          style: TextStyle(
+            color: HexColor('FF#6F6F6F'),
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        TextFormField(
+          controller: controller,
+          maxLines: maxLines,
+          keyboardType: textInputType,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
+            contentPadding: const EdgeInsets.all(8),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -15,3 +15,11 @@ class AppNavigator {
             context, MaterialPageRoute(builder: (context) => screen));
   }
 }
+
+Future<Object?> defaultNavigateAndFinish(context, route) =>
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => route,
+        ),
+        (route) => false);
